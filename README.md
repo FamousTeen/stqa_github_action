@@ -1,3 +1,5 @@
+[![CI Pipeline](https://github.com/FamousTeen/stqa_github_action/actions/workflows/ci.yaml/badge.svg)](https://github.com/FamousTeen/stqa_github_action/actions/workflows/ci.yaml)
+
 # Continuous Integration Pipeline using GitHub Actions
 
 We are going to build a Continuous Integration (CI) Pipeline using GitHub Actions. By the end of this lab, we will have a "Robot" that automatically:
@@ -106,3 +108,9 @@ We are going to implement static analysis using a linter called `flake8` to catc
 3. Commit and push the code to GitHub.
 4. Go to the `Actions` tab in GitHub, and observe the results.
 5. Fix the failing unit tests, push the new code back to GitHub, and repeat until all tests pass.
+
+## CI pipeline summary
+
+- The workflow definition lives at `.github/workflows/ci.yaml` and runs on every push or pull request to `main`.
+- Dependencies are cached between runs, `flake8` linting is scoped to this module, and `pytest` executes from `14_devops_github_actions` with coverage reporting enabled.
+- Coverage XML is uploaded as a build artifact so you can download it from the Actions page without re-running the suite locally.
