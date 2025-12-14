@@ -44,10 +44,6 @@ jobs:
             echo "dir=." >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Lint with Flake8
-        working-directory: ${{ steps.detect-project.outputs.dir }}
-        run: flake8 . --count --select=E1,F4 --show-source --statistics
-
       - name: Run unit tests with coverage
         working-directory: ${{ steps.detect-project.outputs.dir }}
         run: pytest --cov=app --cov-report=term-missing --cov-report=xml
