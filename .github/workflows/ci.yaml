@@ -35,6 +35,9 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Lint with Flake8
+        run: flake8 . --count --select=E1,F4 --show-source --statistics
+
       - name: Detect project directory
         id: detect-project
         run: |
@@ -46,7 +49,7 @@ jobs:
 
       - name: Run unit tests with coverage
         working-directory: ${{ steps.detect-project.outputs.dir }}
-        run: pytest --cov=app --cov-report=term-missing --cov-report=xml
+        run: pytest
 
       - name: Upload coverage artifact
         if: always()
